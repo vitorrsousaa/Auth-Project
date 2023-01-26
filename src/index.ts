@@ -17,7 +17,7 @@ app.use(router);
 router.post("/auth/register", AuthController.register);
 router.post("/auth/authenticate", AuthController.authenticate);
 
-router.use(authValidate as RequestHandler);
+router.use(authValidate);
 router.get("/projects", ProjectController.register);
 
 app.listen(3000, () => console.log("Server started"));

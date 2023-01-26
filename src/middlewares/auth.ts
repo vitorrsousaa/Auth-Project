@@ -4,7 +4,7 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import authConfig from "../config/auth.json";
 
 interface IPayload {
-   sub: string;
+   id: string;
 }
 
 // SEPARAR O ERRO DO MIDDLEWARE PARA OUTRO HANDLER
@@ -35,21 +35,12 @@ export default function authValidate(
    }
 
    try {
-      const { sub: user_id } = jwt.verify(token, authConfig.secret) as IPayload;
+      const payload = jwt.verify(token, authConfig.secret) as IPayload;
 
-      request.user = { id: user_id };
+      request.user = { id: payload.id };
 
       next();
    } catch (error) {
       return res.status(401).send({ error: "Token invalid error" });
    }
-
-   // , (err, decoded) => {
-   //    if (err) {
-   //       return res.status(401).send({ error: "Token invalid" });
-   //    }
-
-   //    req.user.id = decoded;
-   //    return next();
-   // });
 }
