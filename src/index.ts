@@ -1,8 +1,8 @@
-import express, { RequestHandler } from "express";
-import AuthController from "./controllers/authController";
-import ProjectController from "./controllers/projectController";
+import express from "express";
+import AuthController from "./app/controllers/authController";
+import ProjectController from "./app/controllers/projectController";
 import connect from "./database/connect";
-import authValidate from "./middlewares/auth";
+import authValidate from "./app/middlewares/auth";
 
 connect();
 

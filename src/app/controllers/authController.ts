@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import User from "../models/User";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import authConfig from "../config/auth.json";
+import authConfig from "../../config/auth.json";
 
 function generateToken(id: string) {
    return jwt.sign({ id: id }, authConfig.secret, {

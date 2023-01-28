@@ -1,7 +1,7 @@
 import { NextFunction, request, Request, Response } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
 
-import authConfig from "../config/auth.json";
+import authConfig from "../../config/auth.json";
 
 interface IPayload {
    id: string;
